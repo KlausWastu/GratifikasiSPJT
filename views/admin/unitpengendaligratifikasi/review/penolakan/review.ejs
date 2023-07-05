@@ -1,0 +1,161 @@
+<%- include ../../../../partials/header.ejs %> <%- include
+../../../../partials/navbar.ejs %> <%- include ../../../../partials/sidebar.ejs
+%>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Review Laporan</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Halaman Utama</a></li>
+            <li class="breadcrumb-item">
+              <a href="/masukPenolakan">Review Laporan Penolakan</a>
+            </li>
+            <li class="breadcrumb-item active">Review</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">
+                Laporan Penolakan Gratifikasi dari <%=
+                reviewLaporan.dataPenerima.namaPelapor%>
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <div class="card-body">
+              <div class="form-group">
+                <label for="email">Data Pelapor</label> <br />
+                Nama Pelapor :
+                <span><%= reviewLaporan.dataPenerima.namaPelapor %></span>
+                <br />
+                Nomor Induk Pegawai :
+                <span><%= reviewLaporan.dataPenerima.nomorIndukPegawai %></span>
+                <br />
+                Jabatan :
+                <span><%= reviewLaporan.dataPenerima.jabatan %></span>
+                <br />
+                Email :
+                <span
+                  ><%= reviewLaporan.dataPenerima.kontakPelapor.email %></span
+                >
+                <br />
+                Nomor Hp :
+                <span
+                  ><%= reviewLaporan.dataPenerima.kontakPelapor.nomorHp %></span
+                >
+                <br />
+              </div>
+              <label
+                >Dengan in menyampaikan bahwa saya telah menolak pemberian
+                gratifikasi dari :</label
+              >
+              <br />
+              <div class="form-group">
+                <label for="">Data Pemberi</label> <br />
+                Nama Pemberi :
+                <span><%= reviewLaporan.dataPemberi.namaPemberi %></span>
+                <br />
+                Jabatan :
+                <span><%= reviewLaporan.dataPemberi.jabatan %></span>
+                <br />
+                Hubungan :
+                <span><%= reviewLaporan.dataPemberi.hubungan %></span>
+                <br />
+                Alamat :
+                <span><%= reviewLaporan.dataPemberi.alamat %></span>
+                <br />
+                Email :
+                <span
+                  ><%= reviewLaporan.dataPemberi.kontakPemberi.email %></span
+                >
+                <br />
+                Nomor Hp :
+                <span
+                  ><%= reviewLaporan.dataPemberi.kontakPemberi.nomorHp %></span
+                >
+                <br />
+              </div>
+              <div class="form-group">
+                <label for="">Uraian Penolakan</label> <br />
+                Tempat Penolakan <br />
+                Lokasi/Kota :
+                <span
+                  ><%= reviewLaporan.uraianPenolakan.lokasi %> / <%=
+                  reviewLaporan.uraianPenolakan.kota %></span
+                >
+                <br />
+                Waktu Penolakan <br />
+                Hari/tanggal/bulan/tahun :
+                <span><%= reviewLaporan.uraianPenolakan.waktu %></span>
+                <br />
+                Kegiatan (Jika ada) :
+                <span><%= reviewLaporan.uraianPenolakan.kegiatan %></span>
+                <br />
+                Jenis Bentuk Penolakan :
+                <span
+                  ><%= reviewLaporan.uraianPenolakan.jenisBentukPenolakan
+                  %></span
+                >
+                <br />
+                Nilai Penolakan :
+                <span><%= reviewLaporan.uraianPenolakan.nilaiPenolakan %></span>
+                <br />
+                Dokumen Pendukung :
+                <a
+                  href="../../upload/files/penolakan/<%= reviewLaporan.uraianPenolakan.dokPendukung %>"
+                  target="_blank"
+                >
+                  <span><%= reviewLaporan.uraianPenolakan.dokPendukung %></span>
+                </a>
+                <% if(reviewLaporan.uraianPenolakan.dokPendukung) {%>
+                <br />
+                Keterangan Dokumen Pendukung :
+                <span><%= reviewLaporan.uraianPenolakan.ketPendukung %></span>
+                <% } else { %> <br />
+                <% } %>
+                <br />
+              </div>
+
+              <div class="card-footer d-flex justify-content-end">
+                <a
+                  href="/masukPenolakan"
+                  class="btn btn-primary"
+                  style="margin-right: 5px"
+                  >Kembali</a
+                >
+                <form
+                  action="/masukPenolakan/reviewed/<%= reviewLaporan._id %>?statusBaca=true&_method=PUT"
+                  style="display: inline-block"
+                  method="POST"
+                >
+                  <button class="btn btn-success">Reviewed</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<%- include ../../../../partials/footer.ejs %> <%- include
+../../../../partials/js.ejs %>

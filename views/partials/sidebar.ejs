@@ -1,0 +1,222 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="/" class="brand-link" style="text-align: center">
+    <span class="brand-text font-weight-light">Gratifikasi</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul
+        class="nav nav-pills nav-sidebar flex-column"
+        data-widget="treeview"
+        role="menu"
+        data-accordion="false"
+      >
+        <% if(role === "user") {%>
+        <li class="nav-item">
+          <a href="/dashboardUser" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>Halaman Utama</p>
+          </a>
+        </li>
+        <li class="nav-header">PELAPORAN</li>
+        <li class="nav-item">
+          <a href="/lapor" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>Lapor</p>
+          </a>
+        </li>
+        <li class="nav-header">RIWAYAT</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-history"></i>
+            <p>
+              Riwayat Pelaporan
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/riwayatPenerimaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #28a745"> </i>
+                <p>Penerimaan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatPenolakan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #dc3545"></i>
+                <p>Penolakan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatPermintaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #007bff"></i>
+                <p>Permintaan</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <% } else if(role === "admin"){%>
+        <li class="nav-item">
+          <a href="/dashboardUser" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>Halaman Utama</p>
+          </a>
+        </li>
+        <li class="nav-header">PELAPORAN</li>
+        <li class="nav-item">
+          <a href="/lapor" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>Lapor</p>
+          </a>
+        </li>
+        <li class="nav-header">RIWAYAT</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-history"></i>
+            <p>
+              Riwayat Pelaporan
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/riwayatPenerimaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #28a745"> </i>
+                <p>Penerimaan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatPenolakan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #dc3545"></i>
+                <p>Penolakan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatPermintaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #007bff"></i>
+                <p>Permintaan</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-header">PENGGUNA</li>
+        <li class="nav-item">
+          <a href="/tambahPengguna" class="nav-link">
+            <i class="nav-icon fa fa-users"></i>
+            <p>Tambah Pengguna</p>
+          </a>
+        </li>
+        <% } else if (role === "upg") {%>
+        <li class="nav-item">
+          <a href="/dashboardUpg" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>Halaman Utama</p>
+          </a>
+        </li>
+        <li class="nav-header">PELAPORAN</li>
+        <li class="nav-item">
+          <a href="/lapor" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>Lapor</p>
+          </a>
+        </li>
+        <li class="nav-header">RIWAYAT</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-history"></i>
+            <p>
+              Riwayat Pelaporan
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/riwayatPenerimaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #28a745"> </i>
+                <p>Penerimaan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatPenolakan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #dc3545"></i>
+                <p>Penolakan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatPermintaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #007bff"></i>
+                <p>Permintaan</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-header">LAPORAN</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-envelope"></i>
+            <p>
+              Laporan Masuk
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/masukPenerimaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #28a745"> </i>
+                <p>Penerimaan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/masukPenolakan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #dc3545"></i>
+                <p>Penolakan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/masukPermintaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #007bff"></i>
+                <p>Permintaan</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-history"></i>
+            <p>
+              Riwayat Review
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/riwayatReviewedPenerimaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #28a745"> </i>
+                <p>Penerimaan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatReviewedPenolakan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #dc3545"></i>
+                <p>Penolakan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/riwayatReviewedPermintaan" class="nav-link">
+                <i class="fa fa-circle nav-icon" style="color: #007bff"></i>
+                <p>Permintaan</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

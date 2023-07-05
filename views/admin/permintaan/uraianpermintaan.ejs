@@ -1,0 +1,295 @@
+<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs
+%> <%- include ../../partials/sidebar.ejs %>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Laporan Permintaan</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Halaman Utama</a></li>
+            <li class="breadcrumb-item">
+              <a href="/lapor">Lapor</a>
+            </li>
+            <li class="breadcrumb-item active">Form Pelaporan</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Form Permintaan Laporan Gratifikasi</h3>
+            </div>
+            <div class="step-wrapper">
+              <div class="stepper-item completed">
+                <div class="step">1</div>
+                <div class="step-name">Identitas Penerima</div>
+              </div>
+              <div class="stepper-item completed">
+                <div class="step">2</div>
+                <div class="step-name">Identitas Pemberi</div>
+              </div>
+              <div class="stepper-item active">
+                <div class="step">3</div>
+                <div class="step-name">Uraian Permintaan</div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form
+              action="/laporPermintaan/uraianpermintaan"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <input type="hidden" name="namaPelapor" id="namaPelapor" />
+              <input type="hidden" name="NIP" id="NIP" />
+              <input type="hidden" name="jabatan" id="jabatan" />
+              <input type="hidden" name="noHp" id="noHp" />
+              <input type="hidden" name="email" id="email" />
+              <input type="hidden" name="namaPeminta" id="namaPeminta" />
+              <input type="hidden" name="jabatanPeminta" id="jabatanPeminta" />
+              <input type="hidden" name="hubungan" id="hubungan" />
+              <input type="hidden" name="noHpPeminta" id="noHpPeminta" />
+              <input type="hidden" name="emailPeminta" id="emailPeminta" />
+              <input type="hidden" name="alamat" id="alamat" />
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <label>Tempat </label>
+                    <div class="row">
+                      <div class="col-12 col-md-6">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            name="lokasi"
+                            class="form-control"
+                            id="lokasi"
+                            placeholder="Masukan Lokasi"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="form-group">
+                          <input
+                            required
+                            type="text"
+                            name="kota"
+                            class="form-control"
+                            id="kota"
+                            placeholder="Masukan Kota"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="">Jenis Bentuk yang diminta</label>
+                      <input
+                        required
+                        type="text"
+                        name="jenisPermintaan"
+                        class="form-control"
+                        id="jenisPermintaan"
+                        placeholder="Masukan Jenis Bentuk Yang Diminta"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <label for="">Waktu Permintaan</label>
+                        <div
+                          class="input-group date"
+                          id="reservationdate"
+                          data-target-input="nearest"
+                        >
+                          <input
+                            required
+                            type="text"
+                            class="form-control datetimepicker-input"
+                            data-target="#reservationdate"
+                            name="waktupermintaan"
+                          />
+                          <div
+                            class="input-group-append"
+                            data-target="#reservationdate"
+                            data-toggle="datetimepicker"
+                          >
+                            <div class="input-group-text">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-8">
+                        <div class="form-group">
+                          <label for="">Kegiatan (apabila ada)</label>
+                          <input
+                            required
+                            type="text"
+                            name="kegiatan"
+                            class="form-control"
+                            id="kegiatan"
+                            placeholder="Masukan Kegiatan"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="">Nilai Permintaan *</label>
+                      <input
+                        required
+                        type="text"
+                        name="nilaiPermintaan"
+                        class="form-control"
+                        id="nilaiPermintaan"
+                        placeholder="Masukan Nilai Permintaan"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div class="form-gorup">
+                      <label for="">Dokumen Pendukung</label>
+                      <input
+                        required
+                        type="file"
+                        name="uploaddokumen"
+                        class="form-control"
+                        id="uploaddokumen"
+                        placeholder="Masukan dokumen"
+                        accept="application/pdf, image/png, image/jpeg, image/jpg"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-12">
+                    <div
+                      class="form-gorup"
+                      id="keteranganDokGroup"
+                      style="display: none"
+                    >
+                      <label for="">Keterangan Dokumen Pendukung</label>
+                      <textarea
+                        name="keteranganDok"
+                        id="keteranganDok"
+                        class="form-control"
+                        rows="3"
+                        placeholder="Masukan Keterangan dari Dokumen Pendukung"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <label
+                  >(*) Isi sesuai dengan jumlah yang diminta atau nilai yang
+                  ekivalen apabila penerimaan atas permintaan dalam bentuk
+                  lain</label
+                >
+              </div>
+              <div class="card-footer d-flex justify-content-end">
+                <a
+                  href="/laporPermintaan/datapeminta"
+                  class="btn btn-secondary"
+                  style="margin-right: 5px"
+                  >Kembali</a
+                >
+                <!-- <a
+                  href="/laporPenerimaan/uraianpenerimaan"
+                  class="btn btn-primary"
+                  >Selesai</a
+                > -->
+                <button type="submit" id="selesai" class="btn btn-primary">
+                  Selesai
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<script>
+  // Pelapor
+  const namaPelapor = localStorage.getItem("namaPelapor");
+  const jabatan = localStorage.getItem("jabatan");
+  const NIP = localStorage.getItem("NIP");
+  const noHp = localStorage.getItem("noHp");
+  const email = localStorage.getItem("email");
+  document.getElementById("namaPelapor").value = namaPelapor;
+  document.getElementById("jabatan").value = jabatan;
+  document.getElementById("NIP").value = NIP;
+  document.getElementById("noHp").value = noHp;
+  document.getElementById("email").value = email;
+
+  // Peminta
+  const namaPeminta = localStorage.getItem("namaPeminta");
+  const hubungan = localStorage.getItem("hubungan");
+  const jabatanPeminta = localStorage.getItem("jabatanPeminta");
+  const noHpPeminta = localStorage.getItem("noHpPeminta");
+  const emailPeminta = localStorage.getItem("emailPeminta");
+  const alamat = localStorage.getItem("alamat");
+  document.getElementById("namaPeminta").value = namaPeminta;
+  document.getElementById("hubungan").value = hubungan;
+  document.getElementById("jabatanPeminta").value = jabatanPeminta;
+  document.getElementById("noHpPeminta").value = noHpPeminta;
+  document.getElementById("emailPeminta").value = emailPeminta;
+  document.getElementById("alamat").value = alamat;
+
+  const nilaiPermintaan = document.getElementById("nilaiPermintaan");
+
+  function formatRupiah(angka, prefix) {
+    var number_string = angka.replace(/[^,\d]/g, "").toString(),
+      split = number_string.split(","),
+      sisa = split[0].length % 3,
+      rupiah = split[0].substr(0, sisa),
+      ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if (ribuan) {
+      separator = sisa ? "." : "";
+      rupiah += separator + ribuan.join(".");
+    }
+
+    rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+    return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+  }
+
+  nilaiPermintaan.addEventListener("keyup", function (e) {
+    const formattedValue = formatRupiah(this.value, "Rp. ");
+    this.value = formattedValue;
+  });
+  const dok = document.getElementById("uploaddokumen");
+  const ketDok = document.getElementById("keteranganDokGroup");
+  dok.onchange = function () {
+    if (dok.files && dok.files[0]) {
+      ketDok.style.display = "block";
+    } else {
+      ketDok.style.display = "none";
+    }
+  };
+</script>
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>

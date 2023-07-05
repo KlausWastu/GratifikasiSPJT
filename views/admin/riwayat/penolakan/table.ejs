@@ -1,0 +1,36 @@
+<table id="example2" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Tanggal</th>
+      <th>Nama Pemberi</th>
+      <th>Status Laporan</th>
+      <th>Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i=0; i< laporpenolakan.length; i++) {%>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= laporpenolakan[i].tglPembuatanLaporan %></td>
+      <td><%= laporpenolakan[i].dataPemberi.namaPemberi %></td>
+      <td>
+        <% if(laporpenolakan[i].statusBaca === false) {%>
+        <i class="nav-icon fa fa-eye-slash" aria-hidden="true"></i>
+        <span>Belum Ditinjau</span>
+        <% } else if(laporpenolakan[i].statusBaca === true) {%>
+        <i class="nav-icon fa fa-eye" aria-hidden="true"></i>
+        <span>Ditinjau</span>
+        <% } %>
+      </td>
+      <td>
+        <a
+          href="/riwayatPenolakan/preview/<%= laporpenolakan[i]._id %>"
+          class="btn btn-primary btn-sm"
+          >lihat</a
+        >
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

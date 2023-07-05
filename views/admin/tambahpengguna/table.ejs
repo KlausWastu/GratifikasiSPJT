@@ -1,0 +1,85 @@
+<table id="example2" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Status</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i=0; i< tambahpengguna.length; i++) {%>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= tambahpengguna[i].name %></td>
+      <td><%= tambahpengguna[i].email%></td>
+      <% if(tambahpengguna[i].role === "upg") {%>
+      <td>
+        <i class="fa fa-user-circle"
+          ><span class="ml-2">Unit Pengendali Gratifikasi</span></i
+        >
+      </td>
+      <% } else if(tambahpengguna[i].role==="user"){%>
+      <td>
+        <i class="fa fa-user-circle"><span class="ml-2">User</span></i>
+      </td>
+      <%} else if(tambahpengguna[i].role==="admin"){%>
+      <td>
+        <i class="fa fa-user-secret"><span class="ml-2">Admin</span></i>
+      </td>
+      <% }%> <% if(tambahpengguna[i]?.status === "Y") {%>
+      <td>
+        <i class="fa fa-circle fa-sm" aria-hidden="true" style="color: #22db14">
+        </i>
+        Aktif
+      </td>
+      <%} else {%>
+      <td>
+        <i class="fa fa-circle fa-sm" aria-hidden="true" style="color: #f00000">
+        </i>
+        Non-Aktif
+      </td>
+      <%}%>
+      <td>
+        <a
+          href="/tambahPengguna/edit/<%= tambahpengguna[i]._id %>"
+          class="btn btn-primary btn-sm"
+          >Edit</a
+        >
+        <% if(tambahpengguna[i].status === "Y" && tambahpengguna[i].role !==
+        "admin") {%>
+        <form
+          action="/tambahPengguna/status/<%= tambahpengguna[i]._id %>?status=N&_method=PUT"
+          method="POST"
+          style="display: inline-block"
+        >
+          <button class="btn">
+            <i
+              class="fa fa-power-off"
+              aria-hidden="true"
+              style="color: #f00000"
+            ></i>
+          </button>
+        </form>
+        <% } else if(tambahpengguna[i].role !== "admin") {%>
+        <form
+          action="/tambahPengguna/status/<%= tambahpengguna[i]._id %>?status=Y&_method=PUT"
+          method="POST"
+          style="display: inline-block"
+        >
+          <button class="btn">
+            <i
+              class="fa fa-power-off"
+              aria-hidden="true"
+              style="color: #00e732"
+            ></i>
+          </button>
+        </form>
+        <% } %>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

@@ -1,0 +1,26 @@
+<table id="example2" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Tanggal</th>
+      <th>Nama Pelapor</th>
+      <th>Review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i=0; i< laporpermintaan.length; i++) {%>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= laporpermintaan[i].tglPembuatanLaporan%></td>
+      <td><%= laporpermintaan[i].dataPenerima.namaPelapor %></td>
+      <td>
+        <a
+          href="/masukPermintaan/review/<%= laporpermintaan[i]._id %>"
+          class="btn btn-primary btn-sm"
+          >lihat</a
+        >
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

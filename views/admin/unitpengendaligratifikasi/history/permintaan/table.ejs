@@ -1,0 +1,22 @@
+<table id="example2" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Tanggal Lapor</th>
+      <th>Tanggal Reviewed</th>
+      <th>Nama Pelapor</th>
+      <th>Nama Peminta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i=0; i< laporpermintaan.length; i++) {%>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= laporpermintaan[i].tglPembuatanLaporan %></td>
+      <td><%= laporpermintaan[i].tglPenerimaLaporan %></td>
+      <td><%= laporpermintaan[i].dataPenerima.namaPelapor %></td>
+      <td><%= laporpermintaan[i].dataPeminta.namaPeminta %></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

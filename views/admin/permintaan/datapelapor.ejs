@@ -1,0 +1,159 @@
+<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs
+%> <%- include ../../partials/sidebar.ejs %>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Laporan Permintaan</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Halaman Utama</a></li>
+            <li class="breadcrumb-item">
+              <a href="/lapor">Lapor</a>
+            </li>
+            <li class="breadcrumb-item active">Form Pelaporan</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Form Permintaan Laporan Gratifikasi</h3>
+            </div>
+            <div class="step-wrapper">
+              <div class="stepper-item active">
+                <div class="step">1</div>
+                <div class="step-name">Identitas Penerima</div>
+              </div>
+              <div class="stepper-item">
+                <div class="step">2</div>
+                <div class="step-name">Identitas Pemberi</div>
+              </div>
+              <div class="stepper-item">
+                <div class="step">3</div>
+                <div class="step-name">Uraian Permintaan</div>
+              </div>
+            </div>
+            <form action="/laporPermintaan/datapelapor" method="POST">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="namaPelapor">Nama Pelapor </label>
+                      <input
+                        disabled
+                        type="text"
+                        name="namaPelapor"
+                        class="form-control"
+                        id="namaPelapor"
+                        value="<%= nama %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="nomorIndukPegawai">NIP</label>
+                      <input
+                        type="text"
+                        name="nomorIndukPegawai"
+                        class="form-control"
+                        id="nomorIndukPegawai"
+                        placeholder="Masukan NIP"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="jabatan">Jabatan</label>
+                      <input
+                        type="text"
+                        name="jabatan"
+                        class="form-control"
+                        id="jabatan"
+                        placeholder="Masukan Jabatan"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="email">No.Hp/Email</label>
+                      <div class="row">
+                        <div class="col-12 col-md-6 noHp">
+                          <input
+                            type="text"
+                            name="noHp"
+                            class="form-control"
+                            id="noHp"
+                            placeholder="Masukan Nomor HP"
+                          />
+                        </div>
+                        <div class="col-12 col-md-6 email">
+                          <input
+                            type="text"
+                            name="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Masukan Email"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer d-flex justify-content-end">
+                <a
+                  href="/laporPermintaan/datapeminta"
+                  id="next"
+                  class="btn btn-primary"
+                  >Berikutnya</a
+                >
+                <!-- <button type="submit" id="next" class="btn btn-primary">
+                  Berikutnya
+                </button> -->
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<script>
+  document.getElementById("next").onclick = function (e) {
+    if (
+      namaPelapor.value !== "" &&
+      nomorIndukPegawai !== "" &&
+      jabatan.value !== "" &&
+      noHp.value !== "" &&
+      email.value !== ""
+    ) {
+      localStorage.setItem("namaPelapor", namaPelapor.value);
+      localStorage.setItem("NIP", nomorIndukPegawai.value);
+      localStorage.setItem("jabatan", jabatan.value);
+      localStorage.setItem("noHp", noHp.value);
+      localStorage.setItem("email", email.value);
+    } else {
+      alert("Mohon lengkapi semua input dalam form tersebut");
+      e.preventDefault();
+    }
+  };
+</script>
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>

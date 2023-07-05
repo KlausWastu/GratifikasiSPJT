@@ -1,0 +1,71 @@
+<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs
+%> <%- include ../../partials/sidebar.ejs %>
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Tambah Pengguna</h1>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Halaman Utama</a></li>
+            <li class="breadcrumb-item active">Pengguna</li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <%- include ../../partials/message.ejs %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a href="/tambahUser" style="color: inherit">
+            <div class="info-box bg-primary d-flex">
+              <div class="info-box-content align-items-center">
+                <div class="icon">
+                  <i class="nav-icon fa fa-user"></i>
+                </div>
+                <span class="info-box-text">
+                  <strong>User</strong>
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a href="/tambahUpg" style="color: inherit">
+            <div class="info-box bg-primary d-flex">
+              <div class="info-box-content align-items-center">
+                <div class="icon">
+                  <i class="nav-icon fa fa-user"></i>
+                </div>
+                <span class="info-box-text">
+                  <strong>Unit Pengendali Gratifikasi</strong>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+          </a>
+          <!-- /.info-box -->
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <h3>Pengguna</h3>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body"><%- include ./table.ejs %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>
