@@ -55,10 +55,16 @@
               <input type="hidden" name="namaPelapor" id="namaPelapor" />
               <input type="hidden" name="NIP" id="NIP" />
               <input type="hidden" name="jabatan" id="jabatan" />
+              <input type="hidden" name="unitkerja" id="unitkerja" />
               <input type="hidden" name="noHp" id="noHp" />
               <input type="hidden" name="email" id="email" />
               <input type="hidden" name="namaPemberi" id="namaPemberi" />
               <input type="hidden" name="jabatanPemberi" id="jabatanPemberi" />
+              <input
+                type="hidden"
+                name="pekerjaanPemberi"
+                id="pekerjaanPemberi"
+              />
               <input type="hidden" name="hubungan" id="hubungan" />
               <input type="hidden" name="noHpPemberi" id="noHpPemberi" />
               <input type="hidden" name="emailPemberi" id="emailPemberi" />
@@ -168,8 +174,24 @@
                   <div class="col-12 col-md-12">
                     <div class="form-gorup">
                       <label for="">Dokumen Pendukung</label>
+                      <div class="form-group clearfix">
+                        <div class="icheck d-inline">
+                          <input type="checkbox" id="checkYes" />
+                          <label>Ya</label>
+                        </div>
+                        <div class="icheck d-inline">
+                          <input type="checkbox" id="checkNo" />
+                          <label>Tidak</label>
+                        </div>
+                      </div>
+                      <span
+                        style="font-size: 12px; display: none"
+                        id="formatFile"
+                      >
+                        <i>(*) Fle(JPEG,PNG,PDF) Max Size: 2 Mb</i>
+                      </span>
                       <input
-                        required
+                        style="display: none"
                         type="file"
                         name="uploaddokumen"
                         class="form-control"
@@ -238,6 +260,8 @@
   const NIP = localStorage.getItem("NIP");
   const noHp = localStorage.getItem("noHp");
   const email = localStorage.getItem("email");
+  const unitkerja = localStorage.getItem("unitkerja");
+  document.getElementById("unitkerja").value = unitkerja;
   document.getElementById("namaPelapor").value = namaPelapor;
   document.getElementById("jabatan").value = jabatan;
   document.getElementById("NIP").value = NIP;
@@ -251,6 +275,8 @@
   const noHpPemberi = localStorage.getItem("noHpPemberi");
   const emailPemberi = localStorage.getItem("emailPemberi");
   const alamat = localStorage.getItem("alamat");
+  const pekerjaanPemberi = localStorage.getItem("pekerjaan");
+  document.getElementById("pekerjaanPemberi").value = pekerjaanPemberi;
   document.getElementById("namaPemberi").value = namaPemberi;
   document.getElementById("hubungan").value = hubungan;
   document.getElementById("jabatanPemberi").value = jabatanPemberi;
@@ -281,6 +307,31 @@
     const formattedValue = formatRupiah(this.value, "Rp. ");
     this.value = formattedValue;
   });
+
+  // Checkbox
+  const yes = document.getElementById("checkYes");
+  const no = document.getElementById("checkNo");
+  yes.addEventListener("change", function () {
+    no.disabled = this.checked;
+  });
+  no.addEventListener("change", function () {
+    yes.disabled = this.checked;
+  });
+
+  // Checkbox Ya untuk memunculkan upload untuk file
+  const updok = document.getElementById("uploaddokumen");
+  const format = document.getElementById("formatFile");
+  yes.onchange = function () {
+    if (this.checked) {
+      updok.style.display = "block";
+      format.style.display = "block";
+    } else {
+      updok.style.display = "none";
+      format.style.display = "none";
+    }
+  };
+
+  // Logic untuk memunculkan field keterangan dokumen pendukung
   const dok = document.getElementById("uploaddokumen");
   const ketDok = document.getElementById("keteranganDokGroup");
   dok.onchange = function () {
