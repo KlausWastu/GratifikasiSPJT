@@ -9,6 +9,9 @@ let laporanPermintaanSchema = mongoose.Schema(
       jabatan: {
         type: String,
       },
+      unitKerja: {
+        type: String,
+      },
       nomorIndukPegawai: {
         type: String,
       },
@@ -29,6 +32,9 @@ let laporanPermintaanSchema = mongoose.Schema(
         type: String,
       },
       alamat: {
+        type: String,
+      },
+      instansiPeminta: {
         type: String,
       },
       hubungan: {

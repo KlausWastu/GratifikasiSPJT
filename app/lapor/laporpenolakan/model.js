@@ -9,6 +9,9 @@ let laporanPenolakanSchema = mongoose.Schema(
       jabatan: {
         type: String,
       },
+      unitKerja: {
+        type: String,
+      },
       nomorIndukPegawai: {
         type: String,
       },
@@ -26,6 +29,9 @@ let laporanPenolakanSchema = mongoose.Schema(
         type: String,
       },
       jabatan: {
+        type: String,
+      },
+      pekerjaan: {
         type: String,
       },
       alamat: {
