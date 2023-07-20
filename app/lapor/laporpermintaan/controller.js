@@ -7,6 +7,7 @@ module.exports = {
   viewDataPenerima: async (req, res) => {
     try {
       res.render("admin/permintaan/datapelapor", {
+        email: req.session.user.email,
         title: "Data Pelapor",
         nama: req.session.user.name,
         role: req.session.user.role,
@@ -49,11 +50,13 @@ module.exports = {
         namaPelapor,
         NIP,
         jabatan,
+        unitkerja,
         noHp,
         email,
         namaPeminta,
         hubungan,
         jabatanPeminta,
+        instansiPeminta,
         noHpPeminta,
         emailPeminta,
         alamat,
@@ -122,6 +125,7 @@ module.exports = {
               namaPelapor: namaPelapor,
               nomorIndukPegawai: NIP,
               jabatan: jabatan,
+              unitKerja: unitkerja,
               kontakPelapor: {
                 nomorHp: noHp,
                 email: email,
@@ -130,6 +134,7 @@ module.exports = {
             dataPeminta: {
               namaPeminta: namaPeminta,
               jabatan: jabatanPeminta,
+              instansiPeminta: instansiPeminta,
               alamat: alamat,
               hubungan: hubungan,
               kontakPeminta: {
@@ -164,6 +169,7 @@ module.exports = {
             namaPelapor: namaPelapor,
             nomorIndukPegawai: NIP,
             jabatan: jabatan,
+            unitKerja: unitkerja,
             kontakPelapor: {
               nomorHp: noHp,
               email: email,
@@ -172,6 +178,7 @@ module.exports = {
           dataPeminta: {
             namaPeminta: namaPeminta,
             jabatan: jabatanPeminta,
+            instansiPeminta: instansiPeminta,
             alamat: alamat,
             hubungan: hubungan,
             kontakPeminta: {

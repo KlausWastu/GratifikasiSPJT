@@ -8,6 +8,7 @@ module.exports = {
     try {
       res.render("admin/penerimaan/datapelapor", {
         title: "Data Pelapor",
+        email: req.session.user.email,
         nama: req.session.user.name,
         role: req.session.user.role,
       });
@@ -49,11 +50,13 @@ module.exports = {
         namaPelapor,
         NIP,
         jabatan,
+        unitkerja,
         noHp,
         email,
         namaPemberi,
         hubungan,
         jabatanPemberi,
+        pekerjaanPemberi,
         noHpPemberi,
         emailPemberi,
         alamat,
@@ -123,6 +126,7 @@ module.exports = {
               namaPelapor: namaPelapor,
               nomorIndukPegawai: NIP,
               jabatan: jabatan,
+              unitKerja: unitkerja,
               kontakPelapor: {
                 nomorHp: noHp,
                 email: email,
@@ -131,6 +135,7 @@ module.exports = {
             dataPemberi: {
               namaPemberi: namaPemberi,
               jabatan: jabatanPemberi,
+              pekerjaan: pekerjaanPemberi,
               alamat: alamat,
               hubungan: hubungan,
               kontakPemberi: {
@@ -165,6 +170,7 @@ module.exports = {
             namaPelapor: namaPelapor,
             nomorIndukPegawai: NIP,
             jabatan: jabatan,
+            unitKerja: unitkerja,
             kontakPelapor: {
               nomorHp: noHp,
               email: email,
@@ -173,6 +179,7 @@ module.exports = {
           dataPemberi: {
             namaPemberi: namaPemberi,
             jabatan: jabatanPemberi,
+            pekerjaan: pekerjaanPemberi,
             alamat: alamat,
             hubungan: hubungan,
             kontakPemberi: {
@@ -191,7 +198,7 @@ module.exports = {
             ketPendukung: "-",
           },
           pembuat: userPembuat,
-          // tglPembuatanLaporan: newDate,
+          tglPembuatanLaporan: newDate,
         });
         await laporpenerimaan.save();
         req.flash(
