@@ -78,14 +78,27 @@
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label for="jabatan">Jabatan</label>
-                      <input
-                        type="text"
-                        name="jabatan"
-                        class="form-control"
-                        id="jabatan"
-                        placeholder="Masukan Jabatan"
-                      />
+                      <label for="jabatan">Jabatan/Pekerjaan</label>
+                      <div class="row">
+                        <div class="col-12 col-md-6 jabatan">
+                          <input
+                            type="text"
+                            name="jabatan"
+                            class="form-control"
+                            id="jabatan"
+                            placeholder="Masukan Jabatan"
+                          />
+                        </div>
+                        <div class="col-12 col-md-6 pekerjaan">
+                          <input
+                            type="text"
+                            name="pekerjaan"
+                            class="form-control"
+                            id="pekerjaan"
+                            placeholder="Masukan Pekerjaan Pemberi"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
@@ -162,7 +175,8 @@
       jabatan.value !== "" &&
       noHp.value !== "" &&
       email.value !== "" &&
-      alamat.value !== ""
+      alamat.value !== "" &&
+      pekerjaan.value !== ""
     ) {
       localStorage.setItem("namaPemberi", namaPemberi.value);
       localStorage.setItem("hubungan", hubungan.value);
@@ -170,6 +184,7 @@
       localStorage.setItem("noHpPemberi", noHp.value);
       localStorage.setItem("emailPemberi", email.value);
       localStorage.setItem("alamat", alamat.value);
+      localStorage.setItem("pekerjaan", pekerjaan.value);
     } else {
       alert("Mohon lengkapi semua input dalam form tersebut");
       e.preventDefault();
