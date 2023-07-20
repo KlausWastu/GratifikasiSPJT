@@ -74,7 +74,11 @@
 
 @media (max-width: 768px) {
   .noHp,
-  .email {
+  .email,
+  .unitkerja,
+  .jabatan,
+  .pekerjaan,
+  .instansiPeminta {
     margin-bottom: 10px;
   }
 }
