@@ -27,4 +27,21 @@ module.exports = {
       res.redirect("/");
     }
   },
+  downloadPDFView: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const riwayatLaporanUser = await LaporPenerimaan.findOne({ _id: id });
+
+      res.render("admin/unitpengendaligratifikasi/history/penerimaan/downPdf", {
+        title: "Review Laporan",
+        riwayatLaporanUser,
+        nama: req.session.user.name,
+        role: req.session.user.role,
+      });
+    } catch (err) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/");
+    }
+  },
 };
