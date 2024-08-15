@@ -1,5 +1,6 @@
-<%- include ../../../partials/header.ejs %> <%- include
-../../../partials/navbar.ejs %> <%- include ../../../partials/sidebar.ejs %>
+<%- include ../../../../partials/header.ejs %> <%- include
+../../../../partials/navbar.ejs %> <%- include ../../../../partials/sidebar.ejs
+%>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -12,7 +13,7 @@
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/">Halaman Utama</a></li>
             <li class="breadcrumb-item">
-              <a href="/riwayatPenerimaan">Riwayat Laporan Penerimaan</a>
+              <a href="/riwayatPenolakan">Riwayat Laporan Penolakan</a>
             </li>
             <li class="breadcrumb-item active">Preview</li>
           </ol>
@@ -29,10 +30,22 @@
         <div class="col-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Form Laporan Penerimaan Gratifikasi</h3>
+              <h3 class="card-title">Form Laporan Penolakan Gratifikasi</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+              <button
+                onclick="generatePDF()"
+                class="btn btn-danger"
+                id="downPDF"
+              >
+                <i class="nav-icon fa fa-file-pdf" aria-hidden="true"></i>
+                Download as PDF
+              </button>
+            </div>
             <div class="card-body" id="content">
               <div class="form-group">
                 <label for="email">Data Pelapor</label> <br />
@@ -65,7 +78,7 @@
                 <br />
               </div>
               <label
-                >Dengan in menyampaikan bahwa saya telah menerima pemberian
+                >Dengan in menyampaikan bahwa saya telah menolak pemberian
                 gratifikasi dari :</label
               >
               <br />
@@ -104,74 +117,50 @@
                 Tempat Penerimaan <br />
                 Lokasi/Kota :
                 <span
-                  ><%= riwayatLaporanUser.uraianPenerimaan.lokasi %> / <%=
-                  riwayatLaporanUser.uraianPenerimaan.kota %></span
+                  ><%= riwayatLaporanUser.uraianPenolakan.lokasi %> / <%=
+                  riwayatLaporanUser.uraianPenolakan.kota %></span
                 >
                 <br />
                 Waktu Penerimaan <br />
                 Hari/tanggal/bulan/tahun :
-                <span><%= riwayatLaporanUser.uraianPenerimaan.waktu %></span>
+                <span><%= riwayatLaporanUser.uraianPenolakan.waktu %></span>
                 <br />
                 Kegiatan (Jika ada) :
-                <span><%= riwayatLaporanUser.uraianPenerimaan.kegiatan %></span>
+                <span><%= riwayatLaporanUser.uraianPenolakan.kegiatan %></span>
                 <br />
                 Jenis Bentuk Penerimaan :
                 <span
-                  ><%= riwayatLaporanUser.uraianPenerimaan.jenisBentukPenerimaan
+                  ><%= riwayatLaporanUser.uraianPenolakan.jenisBentukPenolakan
                   %></span
                 >
                 <br />
                 Nilai Penerimaan :
                 <span
-                  ><%= riwayatLaporanUser.uraianPenerimaan.nilaiPenerimaan
+                  ><%= riwayatLaporanUser.uraianPenolakan.nilaiPenolakan
                   %></span
                 >
                 <br />
                 Dokumen Pendukung :
                 <span
-                  ><a
-                    href="upload/files/penerimaan/<%= riwayatLaporanUser.uraianPenerimaan.dokPendukung%>"
-                    target="_blank"
-                    ><%= riwayatLaporanUser.uraianPenerimaan.dokPendukung %></a
-                  ></span
+                  ><%= riwayatLaporanUser.uraianPenolakan.dokPendukung %></span
                 >
-                <% if(riwayatLaporanUser.uraianPenerimaan.dokPendukung) {%>
+                <% if(riwayatLaporanUser.uraianPenolakan.dokPendukung) {%>
                 <br />
                 Keterangan Dokumen Pendukung :
                 <span
-                  ><%= riwayatLaporanUser.uraianPenerimaan.ketPendukung %></span
+                  ><%= riwayatLaporanUser.uraianPenolakan.ketPendukung %></span
                 >
                 <% } else { %> <br />
                 <% } %>
                 <br />
               </div>
-              <div class="form-group">
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th colspan="2" style="text-align: center">
-                        Bukti Pelaporan telah diterima oleh Unit Pengendali
-                        Gratifikasi PT.SPJT
-                      </th>
-                    </tr>
-                    <tr>
-                      <th>Nama Penerima Laporan</th>
-                      <th>Tanggal Penerima Laporan</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <td id="namaUPG">
-                      <%= riwayatLaporanUser.namaPenerimaLaporan %>
-                    </td>
-                    <td><%= riwayatLaporanUser.tglPenerimaLaporan %></td>
-                  </tbody>
-                </table>
+              <div class="form-group" hidden>
+                <input
+                  type="text"
+                  value="<%= riwayatLaporanUser.dataPenerima.namaPelapor%>"
+                  id="nama"
+                />
               </div>
-            </div>
-            <div
-              class="card-footer d-flex justify-content-between align-items-center"
-            >
-              <a href="/riwayatPenerimaan" class="btn btn-primary">Kembali</a>
             </div>
           </div>
         </div>
@@ -183,5 +172,29 @@
   </section>
   <!-- /.content -->
 </div>
-<%- include ../../../partials/footer.ejs %> <%- include ../../../partials/js.ejs
-%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script>
+  const pdf = document.getElementById("downPDF");
+  pdf.onclick = function () {
+    document.getElementById("gambar").hidden = false;
+    generatePDF().then(() => {
+      document.getElementById("gambar").hidden = true;
+    });
+  };
+  const name = document.getElementById("nama").value;
+  function generatePDF() {
+    return new Promise((resolve, reject) => {
+      const element = document.querySelector("#content");
+      html2pdf()
+        .set({ filename: "Laporan Penolakan Gratifikasi.pdf" })
+        .from(element)
+        .output("datauristring")
+        .then((pdfString) => {
+          resolve();
+        })
+        .save();
+    });
+  }
+</script>
+<%- include ../../../../partials/footer.ejs %> <%- include
+../../../../partials/js.ejs %>

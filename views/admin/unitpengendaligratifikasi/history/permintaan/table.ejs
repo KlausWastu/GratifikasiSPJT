@@ -6,6 +6,7 @@
       <th>Tanggal Reviewed</th>
       <th>Nama Pelapor</th>
       <th>Nama Peminta</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,15 @@
       <td><%= laporpermintaan[i].tglPenerimaLaporan %></td>
       <td><%= laporpermintaan[i].dataPenerima.namaPelapor %></td>
       <td><%= laporpermintaan[i].dataPeminta.namaPeminta %></td>
+      <td>
+        <a
+          href="/riwayatReviewedPenerimaan/down/<%= laporpermintaan[i]._id%>"
+          class="btn btn-danger"
+        >
+          <i class="nav-icon fa fa-file-pdf" aria-hidden="true"></i>
+          Download as PDF
+        </a>
+      </td>
     </tr>
     <% } %>
   </tbody>

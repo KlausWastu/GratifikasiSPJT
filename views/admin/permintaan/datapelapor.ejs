@@ -77,14 +77,27 @@
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label for="jabatan">Jabatan</label>
-                      <input
-                        type="text"
-                        name="jabatan"
-                        class="form-control"
-                        id="jabatan"
-                        placeholder="Masukan Jabatan"
-                      />
+                      <label for="jabatan">Unit Kerja/Jabatan</label>
+                      <div class="row">
+                        <div class="col-12 col-md-6 unitkerja">
+                          <input
+                            type="text"
+                            name="unitKerja"
+                            class="form-control"
+                            id="unitKerja"
+                            placeholder="Masukan Unit Kerja"
+                          />
+                        </div>
+                        <div class="col-12 col-md-6 jabatan">
+                          <input
+                            type="text"
+                            name="jabatan"
+                            class="form-control"
+                            id="jabatan"
+                            placeholder="Masukan Jabatan"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
@@ -106,7 +119,8 @@
                             name="email"
                             class="form-control"
                             id="email"
-                            placeholder="Masukan Email"
+                            disabled
+                            value="<%= email %>"
                           />
                         </div>
                       </div>
@@ -143,13 +157,15 @@
       nomorIndukPegawai !== "" &&
       jabatan.value !== "" &&
       noHp.value !== "" &&
-      email.value !== ""
+      email.value !== "" &&
+      unitkerja.value !== ""
     ) {
       localStorage.setItem("namaPelapor", namaPelapor.value);
       localStorage.setItem("NIP", nomorIndukPegawai.value);
       localStorage.setItem("jabatan", jabatan.value);
       localStorage.setItem("noHp", noHp.value);
       localStorage.setItem("email", email.value);
+      localStorage.setItem("unitkerja", unitkerja.value);
     } else {
       alert("Mohon lengkapi semua input dalam form tersebut");
       e.preventDefault();

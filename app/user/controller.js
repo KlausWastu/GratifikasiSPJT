@@ -10,7 +10,7 @@ module.exports = {
 
       if (req.session.user === null || req.session.user === undefined) {
         res.render("admin/user/view_signin", {
-          title: "Sign In",
+          title: "Gratifikasi SPJT",
           alert,
         });
       } else {
@@ -23,7 +23,7 @@ module.exports = {
       }
 
       res.render("admin/user/view_signin", {
-        title: "Sign In",
+        title: "Gratifikasi SPJT",
         alert,
       });
     } catch (err) {

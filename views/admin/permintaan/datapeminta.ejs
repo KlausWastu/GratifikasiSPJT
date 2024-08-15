@@ -83,13 +83,26 @@
                   <div class="col-12 col-md-6">
                     <div class="form-group">
                       <label for="jabatan">Jabatan/Instansi Peminta</label>
-                      <input
-                        type="text"
-                        name="jabatan"
-                        class="form-control"
-                        id="jabatan"
-                        placeholder="Masukan Jabatan"
-                      />
+                      <div class="row">
+                        <div class="col-12 col-md-6 jabatan">
+                          <input
+                            type="text"
+                            name="jabatan"
+                            class="form-control"
+                            id="jabatan"
+                            placeholder="Masukan Jabatan"
+                          />
+                        </div>
+                        <div class="col-12 col-md-6 instansiPeminta">
+                          <input
+                            type="text"
+                            name="instansiPeminta"
+                            class="form-control"
+                            id="instansiPeminta"
+                            placeholder="Masukan Instansi Peminta"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
@@ -166,11 +179,13 @@
       jabatan.value !== "" &&
       noHp.value !== "" &&
       email.value !== "" &&
-      alamat.value !== ""
+      alamat.value !== "" &&
+      instansiPeminta.value !== ""
     ) {
       localStorage.setItem("namaPeminta", namaPeminta.value);
       localStorage.setItem("hubungan", hubungan.value);
       localStorage.setItem("jabatanPeminta", jabatan.value);
+      localStorage.setItem("instansiPeminta", instansiPeminta.value);
       localStorage.setItem("noHpPeminta", noHp.value);
       localStorage.setItem("emailPeminta", email.value);
       localStorage.setItem("alamat", alamat.value);

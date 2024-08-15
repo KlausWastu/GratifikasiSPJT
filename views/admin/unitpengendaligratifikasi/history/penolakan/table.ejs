@@ -6,6 +6,7 @@
       <th>Tanggal Reviewed</th>
       <th>Nama Pelapor</th>
       <th>Nama Pemberi</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,15 @@
       <td><%= laporpenolakan[i].tglPenerimaLaporan %></td>
       <td><%= laporpenolakan[i].dataPenerima.namaPelapor %></td>
       <td><%= laporpenolakan[i].dataPemberi.namaPemberi %></td>
+      <td>
+        <a
+          href="/riwayatReviewedPenerimaan/down/<%= laporpenolakan[i]._id%>"
+          class="btn btn-danger"
+        >
+          <i class="nav-icon fa fa-file-pdf" aria-hidden="true"></i>
+          Download as PDF
+        </a>
+      </td>
     </tr>
     <% } %>
   </tbody>

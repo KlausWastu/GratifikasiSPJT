@@ -49,6 +49,9 @@
                 Jabatan :
                 <span><%= reviewLaporan.dataPenerima.jabatan %></span>
                 <br />
+                Unit Kerja :
+                <span><%= reviewLaporan.dataPenerima.unitKerja %></span>
+                <br />
                 Email :
                 <span
                   ><%= reviewLaporan.dataPenerima.kontakPelapor.email %></span
@@ -72,6 +75,9 @@
                 <br />
                 Jabatan :
                 <span><%= reviewLaporan.dataPemberi.jabatan %></span>
+                <br />
+                Pekerjaan :
+                <span><%= reviewLaporan.dataPemberi.pekerjaan %></span>
                 <br />
                 Hubungan :
                 <span><%= reviewLaporan.dataPemberi.hubungan %></span>
@@ -118,14 +124,13 @@
                 >
                 <br />
                 Dokumen Pendukung :
-                <a
-                  href="../../upload/files/penerimaan/<%= reviewLaporan.uraianPenerimaan.dokPendukung %>"
-                  target="_blank"
+                <span
+                  ><a
+                    href="upload/files/penerimaan/<%= reviewLaporan.uraianPenerimaan.dokPendukung%>"
+                    target="_blank"
+                    ><%= reviewLaporan.uraianPenerimaan.dokPendukung %></a
+                  ></span
                 >
-                  <span
-                    ><%= reviewLaporan.uraianPenerimaan.dokPendukung %></span
-                  >
-                </a>
                 <% if(reviewLaporan.uraianPenerimaan.dokPendukung) {%>
                 <br />
                 Keterangan Dokumen Pendukung :
@@ -135,13 +140,8 @@
                 <br />
               </div>
 
-              <div class="card-footer d-flex justify-content-end">
-                <a
-                  href="/masukPenerimaan"
-                  class="btn btn-primary"
-                  style="margin-right: 5px"
-                  >Kembali</a
-                >
+              <div class="card-footer d-flex justify-content-around">
+                <a href="/masukPenerimaan" class="btn btn-primary">Kembali</a>
                 <form
                   action="/masukPenerimaan/reviewed/<%= reviewLaporan._id %>?statusBaca=true&_method=PUT"
                   style="display: inline-block"
